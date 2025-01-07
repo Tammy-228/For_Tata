@@ -9,7 +9,7 @@ import requests
 
 # Gemini API配置
 GOOGLE_API_KEY = "Your Google API Key"  # 替换为你的 Google API 密钥
-API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key=AIzaSyAFmxUmSHr-OCvLKx_TR2hvNAU7hWl8wkg"
+API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash-exp:generateContent?key= "
 
 
 def select_folder():
