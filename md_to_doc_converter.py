@@ -1,11 +1,10 @@
 import tkinter as tk
 from tkinter import filedialog
 from pathlib import Path
-import mammoth
-import markdown
 import docx
-from docx.shared import Pt, RGBColor
+from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
+import re
 import os
 
 
@@ -19,12 +18,57 @@ def select_folder():
     return folder_path
 
 
+def clean_markdown_content(content):
+    """清理 Markdown 格式，只保留纯文本"""
+    # 移除 HTML 标签
+    content = re.sub(r'<[^>]+>', '', content)
+
+    # 移除 Markdown 标题标记 (#)
+    content = re.sub(r'^#+\s*', '', content, flags=re.MULTILINE)
+
+    # 移除粗体标记 (**)
+    content = re.sub(r'\*\*(.*?)\*\*', r'\1', content)
+
+    # 移除斜体标记 (*)
+    content = re.sub(r'\*(.*?)\*', r'\1', content)
+
+    # 移除链接格式，只保留文本
+    content = re.sub(r'\[([^\]]+)\]\([^\)]+\)', r'\1', content)
+
+    # 移除图片标记
+    content = re.sub(r'!\[([^\]]*)\]\([^\)]+\)', '', content)
+
+    # 移除代码块
+    content = re.sub(r'```[\s\S]*?```', '', content)
+
+    # 移除行内代码
+    content = re.sub(r'`([^`]+)`', r'\1', content)
+
+    # 移除引用标记
+    content = re.sub(r'^\s*>\s*', '', content, flags=re.MULTILINE)
+
+    # 移除列表标记
+    content = re.sub(r'^\s*[-*+]\s+', '', content, flags=re.MULTILINE)
+    content = re.sub(r'^\s*\d+\.\s+', '', content, flags=re.MULTILINE)
+
+    # 移除多余的空行
+    content = re.sub(r'\n\s*\n\s*\n', '\n\n', content)
+
+    return content.strip()
+
+
 def convert_md_to_doc(md_file_path, output_dir):
     """将单个 MD 文件转换为 DOC 文件"""
     try:
         # 读取 MD 文件内容
         with open(md_file_path, 'r', encoding='utf-8') as file:
-            md_content = file.read()
+            content = file.read()
+
+        # 清理 Markdown 格式
+        cleaned_content = clean_markdown_content(content)
+
+        # 按段落分割内容
+        paragraphs = cleaned_content.split('\n\n')
 
         # 创建新的 Word 文档
         doc = docx.Document()
@@ -34,33 +78,22 @@ def convert_md_to_doc(md_file_path, output_dir):
         style.font.name = '微软雅黑'
         style.font.size = Pt(12)
 
-        # 将 Markdown 转换为 HTML
-        html_content = markdown.markdown(md_content)
+        # 添加标题（使用文件名作为标题）
+        title = md_file_path.stem.replace('[', '').replace(']', '')
+        heading = doc.add_paragraph()
+        heading_run = heading.add_run(title)
+        heading_run.font.size = Pt(16)
+        heading_run.font.bold = True
+        heading.alignment = WD_ALIGN_PARAGRAPH.CENTER
 
-        # 分割内容为段落
-        paragraphs = html_content.split('\n')
+        # 添加空行
+        doc.add_paragraph()
 
-        # 处理每个段落
+        # 添加正文段落
         for para in paragraphs:
-            if para.startswith('# '):  # 一级标题
+            if para.strip():
                 p = doc.add_paragraph()
-                run = p.add_run(para[2:])
-                run.font.size = Pt(18)
-                run.font.bold = True
-                p.alignment = WD_ALIGN_PARAGRAPH.CENTER
-            elif para.startswith('## '):  # 二级标题
-                p = doc.add_paragraph()
-                run = p.add_run(para[3:])
-                run.font.size = Pt(16)
-                run.font.bold = True
-            elif para.startswith('### '):  # 三级标题
-                p = doc.add_paragraph()
-                run = p.add_run(para[4:])
-                run.font.size = Pt(14)
-                run.font.bold = True
-            elif para.strip():  # 普通段落
-                p = doc.add_paragraph()
-                run = p.add_run(para)
+                run = p.add_run(para.strip())
                 run.font.size = Pt(12)
 
         # 生成输出文件名
@@ -86,7 +119,7 @@ def main():
 
     # 创建输出目录
     input_path = Path(input_folder)
-    output_dir = input_path / "转换后的文档"
+    output_dir = input_path / "Word文档"
     output_dir.mkdir(exist_ok=True)
 
     # 获取所有 MD 文件
