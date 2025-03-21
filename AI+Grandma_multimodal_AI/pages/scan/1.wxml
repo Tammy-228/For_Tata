@@ -1,0 +1,72 @@
+<view class="scan-container">
+  <camera wx:if="{{showCamera}}"
+    device-position="back" 
+    flash="auto" 
+    class="camera"
+    mode="normal"
+    resolution="high"
+    frame-size="medium"
+  >
+    <cover-view class="camera-button" bindtap="takePhoto">
+      <cover-view class="camera-icon">拍照</cover-view>
+    </cover-view>
+  </camera>
+
+  <!-- 预览图片 -->
+  <view class="preview-container" wx:if="{{tempImagePath && !showResult}}">
+    <image 
+      src="{{tempImagePath}}" 
+      mode="aspectFit" 
+      class="preview-image"
+    ></image>
+  </view>
+
+  <!-- 识别结果 -->
+  <view class="chat-container" wx:if="{{showResult}}">
+    <scroll-view class="chat-messages" scroll-y scroll-into-view="{{lastMessageId}}">
+      <!-- AI 的识别消息 -->
+      <view class="message ai-message">
+        <view class="message-content">
+          <view class="message-header">识别内容</view>
+          <view class="message-text">{{recognizedText}}</view>
+        <view class="message-actions">
+          <button class="action-btn" size="mini" bindtap="playText" data-text="{{recognizedText}}">播放</button>
+          <button class="action-btn" size="mini" bindtap="saveToFavorites">收藏</button>
+        </view>
+        </view>
+        
+      </view>
+      
+      <!-- AI 的解释消息 -->
+      <view class="message ai-message" wx:if="{{translation}}">
+        <view class="message-content">
+          <view class="message-header">解释说明</view>
+          <view class="message-text">{{translation}}</view>
+          <view class="message-actions">
+            <button class="action-btn" size="mini" bindtap="playText" data-text="{{translation}}">播放</button>
+            <button class="action-btn" size="mini" bindtap="saveToFavorites">收藏</button>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 用户的消息 -->
+      <block wx:for="{{chatMessages}}" wx:key="id">
+        <!-- 用户消息 -->
+        <view class="message user-message" wx:if="{{item.type === 'user'}}">
+          <view class="message-content">{{item.content}}</view>
+        </view>
+        <!-- AI回答 -->
+        <view class="message ai-message" wx:if="{{item.type === 'ai'}}">
+          <view class="message-content">
+            <view class="message-header">AI回答</view>
+            <view class="message-text">{{item.content}}</view>
+            <view class="message-actions">
+              <button class="action-btn" size="mini" bindtap="playText" data-text="{{item.content}}">播放</button>
+              <button class="action-btn" size="mini" bindtap="saveToFavorites">收藏</button>
+            </view>
+          </view>
+        </view>
+      </block>
+    </scroll-view>
+  </view>
+</view>

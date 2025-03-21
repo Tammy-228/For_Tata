@@ -1,0 +1,25 @@
+<view class="detail-container">
+  <view class="medicine-header">
+    <image class="medicine-image" src="{{medicine.image}}" mode="aspectFill"></image>
+    <view class="medicine-title">{{medicine.name}}</view>
+  </view>
+
+  <view class="content-section">
+    <view class="section-title">药品说明</view>
+    <view class="translation-content">{{medicine.translation}}</view>
+    <view class="audio-control" bindtap="playAudio">
+      <image src="{{isPlaying ? '/images/pause.png' : '/images/play.png'}}"></image>
+      <text>{{isPlaying ? '停止播放' : '语音播报'}}</text>
+    </view>
+  </view>
+
+  <view class="content-section">
+    <view class="section-title">原文内容</view>
+    <view class="original-content">{{medicine.originalText}}</view>
+  </view>
+
+  <view class="action-buttons">
+    <button class="reminder-btn" bindtap="addReminder">设置用药提醒</button>
+    <button class="record-btn" bindtap="viewUsageRecord">查看用药记录</button>
+  </view>
+</view> 

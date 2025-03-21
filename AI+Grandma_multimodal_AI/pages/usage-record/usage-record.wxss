@@ -1,0 +1,121 @@
+.record-container {
+  min-height: 100vh;
+  background: #f5f5f5;
+  padding-bottom: 120rpx;
+}
+
+.medicine-info {
+  background: #fff;
+  padding: 30rpx;
+  display: flex;
+  align-items: center;
+}
+
+.medicine-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 8rpx;
+  margin-right: 20rpx;
+}
+
+.info-content {
+  flex: 1;
+}
+
+.medicine-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 10rpx;
+}
+
+.dosage {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.statistics-section {
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 30rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20rpx;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  display: block;
+  margin-bottom: 10rpx;
+}
+
+.stat-value {
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.record-list {
+  margin-top: 20rpx;
+  background: #fff;
+  padding: 30rpx;
+}
+
+.section-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+  padding-left: 20rpx;
+  border-left: 8rpx solid #07c160;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #eee;
+}
+
+.record-time {
+  font-size: 28rpx;
+  color: #666;
+}
+
+.record-status {
+  font-size: 28rpx;
+  color: #999;
+}
+
+.record-status.completed {
+  color: #07c160;
+}
+
+.empty-tip {
+  text-align: center;
+  color: #999;
+  font-size: 28rpx;
+  padding: 40rpx 0;
+}
+
+.action-buttons {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx 30rpx;
+  background: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.1);
+}
+
+.record-btn {
+  background: #07c160;
+  color: #fff;
+  border-radius: 8rpx;
+}

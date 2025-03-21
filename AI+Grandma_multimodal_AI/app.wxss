@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "iconfont";
+  src: url("data:font/woff2;charset=utf-8;base64,d09GMgABAAAAAALkAAsAAAAABqQAAAKXAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDHAqBEIEsATYCJAMQCwoABCAFhGcHSRvDBciemjwJCKKiKIBgoIDiIR7+/37f9rn3vf8tklSj0cmkk0g0JF5ChAgJjVAhZEp4Qvr9v2s/EFNLmJmerCTvZO/kAFV0LdXpvqlOV6cqnf4BwP/c0SkwH2i+bG1KY9qYdmxQF+B4oIA2xiXpHcgJ+Q3jLsIjeEwgbVQPYWvP0AQkCmOvQNwxKQUSi1QpJaFQr1mbxTNIqJanT+kpPEXfj3/LkSSVzBh75+RWD7R+8PN9yF7/r9UvBQj9eYFsIWMFUIib2uQlXmB8vLQ0XmVbAdSrJPjJzv//B4gDY1RG//JIlhkNYRvYnYU/+QQk+MlPkOBXSCDDr1QgLtSWpwOkDSQAb2Bnd/dql3xw+9N9rx8+//D6ZQe/oYr/Zr45Z2CmFJk71dKx9926tZlr/5a7rx+s7t1c/Lp/+/6t9Zt/xWqZf3P1+o2/Zb/k/9u3bzUwsHr1+/dv1cBq4O/ff/nvP3nyD3Dv/z/AVvl/KbL5dwLAp+KnAADwaX4TgM8zv0MAfErwvwF8fvhFbZ3hN7WzA/DhJkn+UeAsGEcVxj9KKJD8I0lEoqWIS7RUhVVSaKhII61QR9qwpfEd3XjFIKFeMGcXIPS7haTXG2T93kiF/EJDq1+k9YdD2rZwdmHGNOEiRkKegZmQKqEeXB70Ml+ie0+kmRLH8RxRXkKOx4zQNTFHjMQc45wQQjwex7KUYJjHsYjHMRFCPA7isNSUz+c4HA7yOA0AgJEgHgNMCVIKUR44ccGbxV4S+v3+CGVMEo6TDSLdXSHOxzE2ga0JcyuZVbm8cp0gCMLD41CWRBCYh8WEeGYIQjg4EBwsypQuUOJwcEBNK68vt7/eCmTYY44UOUrUaCiNO9rE0BSNmAA=")
+    format("woff2");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 32rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-play:before {
+  content: "\e624";
+}
+
+.icon-save:before {
+  content: "\e632";
+}
+
+/* 使用微信小程序内置图标 */
+.iconfont {
+  display: inline-block;
+  font-family: "weui";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  text-align: center;
+  text-decoration: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  vertical-align: middle;
+  font-size: 48rpx;
+  color: #333;
+}
+
+.icon-voice:before {
+  content: "\EA26"; /* 微信内置的语音图标 */
+}
+
+.icon-collection:before {
+  content: "\EA0E"; /* 微信内置的收藏图标 */
+}
+
+@font-face {
+  font-family: "iconfont";
+  src: url("data:font/woff2;charset=utf-8;base64,d09GMgABAAAAAAOkAAsAAAAACFwAAANWAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHFQGYACDHAqDaIM0ATYCJAMQCwoABCAFhGcHShtpBxHVm8PIfhzYMck6c2bkVhObPT0E1Vj7vdg9kQgUSp5AjiBqpOwxGwNUFKoK1ShR5fz/f+x9nyGVpvXQPBHJ0unsGSGRIJFIkC6BRKPRWLT87b/rf+KaDJJE0xBSi5BqZENY9PvnvtObGpGgkBZCotH/53B5+/OB5bfZXMoYtMYYdtQLeKOBxmibtxvIAfxP+B/GLi/yOE2g3ZhcwUFxeR0UZGBeIO4VpwwUYilrqIRWqCtWFvEJClPTh/oUwEf/9/EfFgoKVZWZeU5cFKVQ+Ct8d5Zr/z+HaRIE+PkcYNvImAMU4qbSfY0ojubItNvfuVwCbW2p+Cv8u/270/+fWIhq1u4/vFBVCSEyYhvwJUq+wpOMVPAVSgZf3UnJUVuv3QC0A/EAiN+A6rrWVcL96UhRdkpv7JRKO8VXDuGlKsvRyoGztaPnxlb5/t3y3bvFe/cKt2/nbt3Kj1y/XlheNKe8tBgxcuVKvvDMmLwxIyT3GZO+fSvdvJm7fj2XG7lwPndTz+ZvFPM3dXLhZv7WrULp1q0C/5H8rdv5m7cLI7cKxZu3CyO3bhdu3C4Ub94q5G/eKuRGbhbyt24XCzdvF/I3bxVyI7cLhfytQv7m7UL+5q1C4datfO7WrULx1q1C7vbt/O2bOT46mrt1s5i7dbNYuHWzWLx1s5S7dbNUvHWrVLp1q1S8datUvHmrVOJvFW/dKhVv3SyVbt4slfgXwX/ev4Q/RYA/R0Arzs6yBAEQf+TVE1v4y4HzByT+e0WIh0QCxM/IjR0ACf+oc+1/YOp/ZvX/R6S/g1/BX+Gx8Xv5e6SVt9OXlzfzF0Zj/qeyIkv+u5UZ5oFqRd5cLVqkHaXnUG1QjqgdpzF0Pu3HXwd0a0ehzRgNhTajkTUbR1bsHFTazUel2QK0m1U6vl0/phAp2jBrPEDoNQmVbi+R9bpEVuwpVEZ9h0pvSEK7/Zhxatt1DBk1FopIQcQMKjVYj5lOmZJ+RLLCGYq6dEp8BhHmYQrRo0wlQjQ9hQjxGhLIQCxlKVQQwhhUwqWQkUxBiYIMZYxUUEYyZSBFUoNKYwwUEUohQgwiRQ2MMxPHVFLy80dIrOAYFEtJR5ufgRDMw6gQethjhgjt9VMQjzINJMBAWMSkUAqIwTBQEl4U5JgRFVCMCA7KYVQBTRGZZA5IIqoGNRpWr6C+wS3QjjWzRIocJaqoo4kmWuihS4wlPUVqx7BKc8QH66iiiirL3h4BAAAA")
+    format("woff2");
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 48rpx;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #ff9f43;
+}
+
+.icon-heart:before {
+  content: "\e8ab";
+}
+
+.icon-clock:before {
+  content: "\e8ba";
+}

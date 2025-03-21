@@ -1,0 +1,43 @@
+<view class="record-container">
+  <!-- 物品信息 -->
+  <view class="medicine-info">
+    <image class="medicine-image" src="{{medicine.image}}" mode="aspectFill"></image>
+    <view class="info-content">
+      <view class="medicine-name">{{medicine.name}}</view>
+      <view class="dosage">用量：{{medicine.dosage}}</view>
+    </view>
+  </view>
+
+  <!-- 用药统计 -->
+  <view class="statistics-section">
+    <view class="stat-item">
+      <text class="stat-label">服药天数</text>
+      <text class="stat-value">{{statistics.totalDays}}天</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">完成率</text>
+      <text class="stat-value">{{statistics.completionRate}}%</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">最近服药</text>
+      <text class="stat-value">{{statistics.lastUsage ? util.formatTime(statistics.lastUsage) : '暂无记录'}}</text>
+    </view>
+  </view>
+
+  <!-- 用药记录列表 -->
+  <view class="record-list">
+    <view class="section-title">服药记录</view>
+    <view class="record-item" wx:for="{{records}}" wx:key="_id">
+      <view class="record-time">{{util.formatTime(item.createTime)}}</view>
+      <view class="record-status {{item.status === 'completed' ? 'completed' : ''}}">
+        {{item.status === 'completed' ? '已服用' : '未服用'}}
+      </view>
+    </view>
+    <view class="empty-tip" wx:if="{{!records.length}}">暂无服药记录</view>
+  </view>
+
+  <!-- 记录按钮 -->
+  <view class="action-buttons">
+    <button class="record-btn" bindtap="recordUsage">记录服药</button>
+  </view>
+</view> 

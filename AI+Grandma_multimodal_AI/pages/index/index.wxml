@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 顶部用户信息 -->
+  <view class="user-section" style="height: 127rpx; display: block; box-sizing: border-box">
+    <view class="user-info" wx:if="{{hasUserInfo}}">
+      <image class="avatar" src="{{userInfo.avatarUrl}}"></image>
+      <text class="nickname">{{userInfo.nickName}}</text>
+      <view class="logout-btn" bindtap="logout">退出登录</view>
+    </view>
+    <view wx:else class="login-section">
+      <button class="login-btn" bindtap="getUserProfile">点击登录</button>
+      <text class="login-tip">登录后可以使用收藏功能</text>
+    </view>
+  </view>
+
+  <!-- 主要功能区 -->
+  <view class="feature-section">
+    <view class="feature-card scan" bindtap="goToScan" style="height: 287rpx; display: flex; box-sizing: border-box">
+      <view class="card-content">
+        <text class="card-title">扫描产品</text>
+        <text class="card-desc">快速识别并解读产品说明</text>
+      </view>
+      <image class="card-icon" src="/assets/icons/scan.svg"></image>
+    </view>
+
+    <view class="feature-grid">
+      <view class="grid-item favorites" bindtap="goToFavorites" style="height: 239rpx; display: flex; box-sizing: border-box; left: 0rpx; top: 0rpx">
+        <view class="icon-wrapper" style="width: 108rpx; display: flex; box-sizing: border-box; height: 112rpx">
+          <image class="grid-icon" src="/assets/icons/heart.svg" style="height: 68rpx; display: block; box-sizing: border-box; width: 70rpx"></image>
+        </view>
+        <text class="grid-text" style="width: 108rpx; display: block; box-sizing: border-box; height: 52rpx">我的收藏</text>
+      </view>
+      
+      <view class="grid-item reminders" bindtap="goToReminders">
+        <view class="icon-wrapper" style="height: 108rpx; display: flex; box-sizing: border-box; width: 108rpx">
+          <image class="grid-icon" src="/assets/icons/clock.svg" style="height: 66rpx; display: block; box-sizing: border-box; width: 70rpx"></image>
+        </view>
+        <text class="grid-text" style="height: 56rpx; display: block; box-sizing: border-box">个人每日清单</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 使用指南  -->
+  <view class="guide-section" style="height: 339rpx; display: block; box-sizing: border-box">
+    <text class="section-title">使用指南</text>
+    <view class="guide-steps">
+      <view class="guide-item">
+      </view>
+      <view class="guide-item">
+        <view class="step-number">1</view>
+        <text class="step-text">拍摄产品，让AI翻译给你听</text>
+      </view>
+      <view class="guide-item">
+        <view class="step-number">2</view>
+        <text class="step-text">遇到常用产品，加入我的收藏，可随时查看</text>
+      </view>
+      <view class="guide-item">
+        <view class="step-number">3</view>
+        <text class="step-text">建立个人产品清单，提醒您每日使用</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="test-buttons">
+    <button bindtap="makeRequest" class="test-btn">测试API</button>
+    <button bindtap="testVisionAPI" class="test-btn">测试视觉API</button>
+  </view>
+</view> 

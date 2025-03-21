@@ -1,0 +1,36 @@
+{
+  "lazyCodeLoading": "requiredComponents",
+  "pages": [
+    "pages/index/index",
+    "pages/scan/scan",
+    "pages/favorites/favorites",
+    "pages/reminder/reminder",
+    "pages/medicine-detail/medicine-detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ff9f43",
+    "navigationBarTitleText": "娭毑，该吃保健品嘞",
+    "navigationBarTextStyle": "white"
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于查找附近内容"
+    },
+    "scope.camera": {
+      "desc": "相机权限用于拍摄你想识别的信息"
+    }
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "networkTimeout": {
+    "request": 60000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "useExtendedLib": {
+    "weui": true
+  }
+} 

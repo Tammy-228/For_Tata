@@ -1,0 +1,80 @@
+<view class="container">
+  <!-- 顶部标题 -->
+  <view class="header">
+    <text class="title">我的收藏</text>
+  </view>
+
+  <!-- 收藏列表 -->
+  <view class="favorites-list">
+    <block wx:if="{{favorites.length > 0}}">
+      <view class="favorite-item" wx:for="{{favorites}}" wx:key="_id">
+        <view class="item-main">
+          <!-- 添加图片预览 -->
+          <image 
+            wx:if="{{item.imageUrl}}"
+            src="{{item.imageUrl}}" 
+            mode="aspectFill" 
+            class="preview-image"
+            bindtap="previewImage"
+            data-url="{{item.imageUrl}}"
+            binderror="handleImageError"
+            data-index="{{index}}"
+          />
+          <view class="item-info">
+            <view class="item-header">
+              <text class="item-title">{{item.name}}</text>
+              <text class="item-time">{{item.createTime}}</text>
+            </view>
+            <view class="item-content">
+              <text class="content-text">{{item.translation}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="item-actions">
+          <button class="action-btn play" bindtap="playText" data-text="{{item.translation}}">
+            播放
+          </button>
+          <button class="action-btn delete" bindtap="deleteFavorite" data-id="{{item._id}}">
+            删除
+          </button>
+        </view>
+      </view>
+    </block>
+    <view class="empty-state" wx:else>
+      <text>暂无收藏内容</text>
+    </view>
+  </view>
+
+  <view class="medicine-list">
+    <view class="medicine-item" wx:for="{{medicines}}" wx:key="id" bindtap="showDetail" data-id="{{item._id}}">
+      <image 
+        wx:if="{{item.imageUrl}}"
+        src="{{item.imageUrl}}" 
+        mode="aspectFill" 
+        class="medicine-thumbnail"
+      />
+      <view class="medicine-info">
+        <view class="medicine-name">{{item.name}}</view>
+        <view class="medicine-time">{{item.createTime}}</view>
+      </view>
+      <view class="arrow">></view>
+    </view>
+  </view>
+
+  <!-- 详情弹窗 -->
+  <view class="detail-modal" wx:if="{{showDetail}}">
+    <view class="modal-content">
+      <view class="detail-image" wx:if="{{currentMedicine.imageUrl}}">
+        <image 
+          src="{{currentMedicine.imageUrl}}" 
+          mode="aspectFit" 
+          class="full-image"
+          bindtap="previewImage"
+        />
+      </view>
+      <view class="chat-list">
+        <!-- 现有的聊天内容显示 -->
+      </view>
+    </view>
+  </view>
+</view> 

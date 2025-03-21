@@ -1,0 +1,449 @@
+/* 主容器样式 */
+.container {
+  height: 100vh; /* 设置容器高度为整个视窗高度 */
+  display: flex; /* 使用弹性布局 */
+  flex-direction: column; /* 垂直方向布局 */
+  background: #f7f7f7; /* 浅灰色背景 */
+}
+
+/* 相机区域样式 */
+.camera-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: #000;
+}
+
+.camera {
+  width: 100%;
+  height: 100%;
+}
+
+/* 相机取景框样式 */
+.camera-mask {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 60%;
+  border: 2px solid #ff9f43;
+  border-radius: 8px;
+  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.5);
+}
+
+/* 操作按钮区域样式 */
+.controls {
+  position: absolute;
+  bottom: 60rpx;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* 控制按钮基础样式 */
+.control-btn {
+  padding: 20rpx 40rpx;
+  border-radius: 44rpx;
+  background: #fff;
+  color: #333;
+  font-size: 28rpx;
+  margin: 0 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+.control-btn.capture {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  color: #ff9f43;
+  font-weight: 500;
+}
+
+/* 按钮内图标样式 */
+.control-btn image {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+/* 结果展示区域样式 */
+.result-container {
+  flex: 1;
+  padding: 30rpx;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  margin-top: -30rpx;
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.05);
+  padding-bottom: 120rpx;
+}
+
+/* 结果头部样式 */
+.result-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+/* 结果标题样式 */
+.result-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #333;
+}
+
+/* 聊天区域样式 */
+.chat-container {
+  padding: 20rpx;
+  max-height: 60vh;
+  overflow-y: auto;
+  padding-bottom: 180rpx; /* 增加更多底部内边距 */
+}
+
+/* 消息样式 */
+.message {
+  margin-bottom: 30rpx; /* 增加消息之间的间距 */
+  display: flex;
+  flex-direction: column;
+}
+
+/* 最后一条消息的额外下边距 */
+.message:last-child {
+  margin-bottom: 60rpx; /* 增加最后一条消息的下边距 */
+}
+
+/* 用户消息靠右 */
+.message.user {
+  align-items: flex-end;
+}
+
+/* AI消息靠左 */
+.message.ai {
+  align-items: flex-start;
+}
+
+/* 消息内容样式 */
+.message-content {
+  max-width: 80%;
+  padding: 16rpx 24rpx;
+  border-radius: 16rpx;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
+
+/* 用户消息气泡样式 */
+.user .message-content {
+  background: #ff9f43;
+  color: #fff;
+  border-radius: 16rpx 16rpx 0 16rpx;
+}
+
+/* AI消息气泡样式 */
+.ai .message-content {
+  background: #f1f1f1; /* 灰色背景 */
+  color: #333;
+  border-radius: 16rpx 16rpx 16rpx 0;
+}
+
+/* 输入框区域样式 */
+.input-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 30rpx 20rpx; /* 增加上下内边距 */
+  background: #fff;
+  box-shadow: 0 -2rpx 10rpx rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+  margin-top: 40rpx; /* 增加与上方内容的间距 */
+}
+
+/* 输入框样式 */
+.input {
+  flex: 1;
+  height: 72rpx;
+  background: #f5f5f5;
+  border-radius: 36rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+}
+
+/* 发送按钮样式 */
+.send-btn {
+  padding: 0 36rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 36rpx;
+  background: #ff9f43;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+/* 发送按钮图标 */
+.send-btn image {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+/* 播放按钮样式 */
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 24rpx;
+  margin-top: 12rpx;
+  background: rgba(255, 159, 67, 0.1);
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  color: #ff9f43;
+}
+
+/* 播放按钮图标 */
+.play-btn image {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 8rpx;
+}
+
+/* 预览区域样式 */
+.preview-container {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 预览图片样式 */
+.preview-image {
+  width: 100%;
+  height: 50%;
+  object-fit: contain;
+}
+
+/* 预览控制区样式 */
+.preview-controls.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(50% - 30rpx);
+  display: flex;
+  justify-content: center;
+  gap: 24rpx;
+  padding: 32rpx;
+  border-radius: 16rpx;
+}
+
+/* 预览区域按钮基础样式 */
+.preview-controls .control-btn {
+  min-width: 200rpx;
+  height: 88rpx;
+  padding: 0 40rpx;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+}
+
+/* 确认按钮样式 */
+.control-btn.confirm {
+  background: linear-gradient(135deg, #ff9f43, #ff7f50);
+  color: #fff;
+}
+
+/* 取消按钮样式 */
+.control-btn.cancel {
+  background: rgba(255, 255, 255, 0.9);
+  color: #333;
+}
+
+/* 按钮悬停效果 */
+.preview-controls .control-btn:active {
+  transform: scale(0.98);
+  transition: all 0.2s ease;
+}
+
+/* AI回答文字样式 */
+.ai .message-content {
+  font-size: 32rpx;
+  line-height: 1.6;
+}
+
+/* 播放按钮文字样式 */
+.play-text {
+  font-size: 24rpx;
+  color: #07c160;
+}
+
+/* 发送按钮样式 */
+.send-btn {
+  padding: 0 36rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  border-radius: 36rpx;
+  background: #ff9f43;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 500;
+}
+
+/* 相机按钮文字样式 */
+.camera-container .control-btn {
+  width: auto;
+  height: auto;
+  padding: 24rpx 60rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #ff9f43;
+  background: #fff;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+}
+
+/* 拍照按钮悬停效果 */
+.camera-container .control-btn:active {
+  transform: scale(0.98);
+  opacity: 0.9;
+}
+
+/* 图标基础样式 */
+.iconfont {
+  font-family: "weui"; /* 使用微信内置图标字体 */
+  font-size: 48rpx;
+  color: inherit;
+}
+
+/* 定义各种图标的Unicode编码 */
+.icon-camera:before {
+  content: "\EA12";
+}
+
+.icon-scan:before {
+  content: "\EA05";
+}
+
+.icon-refresh:before {
+  content: "\EA0F";
+}
+
+.icon-voice:before {
+  content: "\EA26";
+}
+
+.icon-send:before {
+  content: "\EA04";
+}
+
+/* 按钮中图标和文字的布局 */
+.control-btn {
+  display: flex;
+  align-items: center;
+  gap: 20rpx;
+}
+
+/* 播放按钮布局 */
+.play-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4rpx;
+}
+
+/* 播放按钮图标大小 */
+.play-btn .iconfont {
+  font-size: 3rpx;
+}
+
+/* 发送按钮图标样式 */
+.send-btn .iconfont {
+  font-size: 40rpx;
+  color: #fff;
+}
+
+/* 预览区域按钮样式 */
+.preview-controls .control-btn {
+  padding: 20rpx 40rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+/* 结果区域重新拍照按钮样式 */
+.result-header .control-btn {
+  font-size: 28rpx; /* 稍微调小字号 */
+  padding: 12rpx 28rpx; /* 调整内边距 */
+  background: rgba(7, 193, 96, 0.08); /* 调整背景色透明度 */
+  border-radius: 24rpx; /* 增加圆角 */
+  color: #07c160;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center; /* 文字居中 */
+  border: 1rpx solid rgba(7, 193, 96, 0.2); /* 添加淡边框 */
+  transition: all 0.3s ease; /* 添加过渡效果 */
+}
+
+/* 按钮悬停效果 */
+.result-header .control-btn:active {
+  background: rgba(7, 193, 96, 0.15);
+  transform: scale(0.98);
+}
+
+/* 识别结果文本区域样式 */
+.recognized-text {
+  margin: 20rpx 0;
+  padding: 24rpx;
+  background: #f9f9f9;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 16rpx;
+}
+
+/* 翻译结果区域样式 */
+.translation {
+  margin: 20rpx 0;
+  padding: 24rpx;
+  background: #f9f9f9;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 16rpx;
+}
+
+/* 结果文本样式 */
+.recognized-text text,
+.translation text {
+  display: block;
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+/* 播放按钮容器样式 */
+.recognized-text .play-btn,
+.translation .play-btn {
+  margin-top: 0;
+}
+
+/* 操作按钮容器 */
+.action-buttons {
+  display: flex;
+  gap: 16rpx;
+  margin-top: 16rpx;
+}
+
+/* 收藏按钮样式 */
+.save-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 8rpx 24rpx;
+  background: rgba(255, 152, 0, 0.1);
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  color: #ff9800;
+}

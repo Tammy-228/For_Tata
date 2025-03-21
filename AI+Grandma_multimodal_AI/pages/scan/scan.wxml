@@ -1,0 +1,89 @@
+<view class="container">
+  <!-- 相机区域 -->
+  <view class="camera-container" wx:if="{{showCamera}}">
+    <camera class="camera" device-position="back" flash="off"></camera>
+    <view class="camera-mask"></view>
+    <view class="controls">
+      <view class="control-btn capture" bindtap="takePhoto">
+        <text>拍照</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预览区域 -->
+  <view class="preview-container" wx:if="{{tempImagePath && !showResult}}">
+    <image src="{{tempImagePath}}" mode="aspectFit" class="preview-image"></image>
+    <view class="preview-controls center">
+      <view class="control-btn confirm" bindtap="processImage">识别图片</view>
+      <view class="control-btn cancel" bindtap="restartScan">重新拍照</view>
+    </view>
+  </view>
+
+  <!-- 结果展示区域 -->
+  <view class="result-container" wx:if="{{showResult}}">
+    <view class="result-header">
+      <text class="result-title">识别结果</text>
+      <view class="control-btn" bindtap="restartScan">
+        <text>重新拍照</text>
+      </view>
+    </view>
+
+    <!-- 识别的文本 -->
+    <view class="recognized-text">
+      <text>{{recognizedText}}</text>
+      <view class="action-buttons">
+        <view class="play-btn" bindtap="playText" data-text="{{recognizedText}}">
+          <text>大声播放</text>
+        </view>
+        <view class="save-btn" bindtap="saveToFavorites">
+          <text>收藏对话吧</text>
+        </view>
+        <view class="save-btn" bindtap="addToReminder">
+          <text>加入每日清单</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 翻译结果 -->
+    <view class="translation" wx:if="{{translation}}">
+      <text>{{translation}}</text>
+      <view class="action-buttons">
+        <view class="play-btn" bindtap="playText" data-text="{{translation}}">
+          <text>大声播放</text>
+        </view>
+        <view class="save-btn" bindtap="saveToFavorites">
+          <text>收藏对话</text>
+        </view>
+        <view class="save-btn" bindtap="addToReminder">
+          <text>加入每日清单</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 聊天区域 -->
+    <scroll-view class="chat-container" scroll-y scroll-into-view="{{lastMessageId}}">
+      <view wx:for="{{chatMessages}}" wx:key="id" 
+            class="message {{item.type}}" 
+            id="{{item.id}}">
+        <view class="message-content">{{item.content}}</view>
+        <view class="play-btn" wx:if="{{item.type === 'ai'}}" 
+              bindtap="playText" 
+              data-text="{{item.content}}">
+          <text>播放</text>
+        </view>
+      </view>
+    </scroll-view>
+
+    <!-- 输入框 -->
+    <view class="input-container">
+      <input class="input" 
+             type="text" 
+             value="{{inputMessage}}" 
+             bindinput="onInputChange" 
+             placeholder="输入问题..."/>
+      <view class="send-btn" bindtap="sendMessage">
+        <text>发送</text>
+      </view>
+    </view>
+  </view>
+</view>
